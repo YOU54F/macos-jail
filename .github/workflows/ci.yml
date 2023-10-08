@@ -1,5 +1,5 @@
 name: CI
-on: [ push, pull_request ]
+on: [ push, pull_request, workflow_dispatch ]
 jobs:
   lint:
     runs-on: ubuntu-20.04
@@ -13,6 +13,7 @@ jobs:
           macos-11,
           macos-12,
           macos-13,
+          macos-14,
         ]
     runs-on: ${{ matrix.os }}
     steps:
