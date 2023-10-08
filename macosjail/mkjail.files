@@ -26,3 +26,19 @@
 /System/Library/CoreServices/SystemVersionCompat.plist
 /usr/share/terminfo/
 /usr/share/zoneinfo/
+
+# magic file data
+/usr/share/file/
+
+# zsh shared libs
+/usr/lib/zsh/5.9/zsh/
+
+# sudo
+/etc/sudoers
+/etc/sudoers.d/
+/etc/pam.d/
+/usr/lib/pam/
+
+# Rosetta - note wont be on x86_64 runners
+/Library/Apple/usr/libexec/oah/
+/usr/libexec/rosetta/
