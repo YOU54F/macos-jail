@@ -1,0 +1,32 @@
+macos_task:
+  macos_instance:
+    # image: ventura-jail
+    image: ghcr.io/cirruslabs/macos-ventura-base:latest
+    # user: admin
+    # password: admin
+  env:
+    jail_dir: jail
+  script: |
+    python -m macosjail "$jail_dir" # prepare chroot dir contents
+    sudo chroot "$jail_dir" /bin/zsh # enter chroot
+    whoami
+    sudo whoami
+    uname -a
+    arch -x86_64 uname -a
+
+
+  # script: |
+  #   ls
+  #   # brew install python
+  #   python3 --version
+  #   echo "Hello from host $PWD!"
+  #   sudo python3 -m macosjail "$jail_dir" # prepare chroot dir contents
+  #   # tar -czf "$jail_dir.tar.gz" "$jail_dir" # archive chroot dir
+  #   sudo chroot "$jail_dir" $jail_dir /bin/sh -i # enter chroot
+  #   # In order to make DNS work in chroot, run:
+  #   sudo mkdir -p "$jail_dir/var/run"
+  #   sudo link /var/run/mDNSResponder "$jail_dir/var/run/mDNSResponder"
+  #   pwd
+  #   uname -a
+  # artifacts:
+  #   pkg: $jail_dir.tar.gz

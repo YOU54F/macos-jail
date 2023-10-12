@@ -12,7 +12,7 @@ from typing import Set
 @dataclass
 class CopyOpts:
     target: str
-    allow_absent: bool = False
+    allow_absent: bool = True
 
 
 def main():
