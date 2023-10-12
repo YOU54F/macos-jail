@@ -13,8 +13,8 @@ jobs:
             name: monterey
           - os: macos-13
             name: ventura
-          - os: macos-14
-            name: sonoma
+          # - os: macos-14
+          #   name: sonoma
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
