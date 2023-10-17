@@ -26,8 +26,8 @@ jobs:
       - uses: actions/setup-python@v3
       - run: brew install crane
       - run: |
-          echo building jail with $image
-          case "$image" in
+          echo building jail with ${{ matrix.image }}
+          case "$${{ matrix.image }}" in
             "x86_64")
               export mkjail_files="macosjail/mkjail.files.x86_64_full"
               ;;
@@ -41,7 +41,7 @@ jobs:
               export mkjail_files="macosjail/mkjail.files.x86_64_slim,macosjail/mkjail.files.xcode-command-line-tools"
               ;;
             *)
-              echo "Unknown image: $image"
+              echo "Unknown image: ${{ matrix.image }}"
               ;;
           esac
           echo "building jail with $mkjail_files"
