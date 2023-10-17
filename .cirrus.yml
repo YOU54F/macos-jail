@@ -1,53 +1,6 @@
-# macos_base_task:
-#   macos_instance:
-#     image: foo
-#   env:
-#     matrix:
-#       - image: arm64e_slim
-#       - image: arm64e_01_slim
-#       - image: arm64e_rosetta_slim
-#       - image: arm64e_rosetta_full
-#       - image: arm64e_01_rosetta_slim
-#       - image: arm64e_01_rosetta_full
-#       - image: arm64e_rosetta_aot_full
-#       - image: arm64e_01_rosetta_aot_full
-#   build_jail_script: |
-#     if [ -n "${XCODE_CLI+x}" ]; then
-#       export extra_libs=",macosjail/mkjail.files.xcode-command-line-tools$extra_libs"
-#     fi
-#     if [ -n "${VZ+x}" ]; then
-#       export extra_libs=",macosjail/mkjail.files.virtualization$extra_libs"
-#     fi
-#     if [ -n "${XCODE_FULL+x}" ]; then
-#       export extra_libs=",macosjail/mkjail.files.xcode$extra_libs"
-#     fi
-#     sudo python3 -m macosjail $image -f macosjail/mkjail.files.$image$extra_libs
-#   archive_jail_script: |
-#     if [ -n "${LOCAL_ARCHIVE+x}" ]; then
-#       tar -czf "$image.tar.gz" $image
-#     fi
-#   create_image_script: |
-#     export TAG_NAME=latest
-#     if [ -n "${XCODE_CLI+x}" ]; then
-#       export TAG_NAME="$TAG_NAME-xcode-cli"
-#     fi
-#     if [ -n "${VZ+x}" ]; then
-#       export TAG_NAME="$TAG_NAME-vz"
-#     fi
-#     if [ -n "${XCODE_FULL+x}" ]; then
-#       export TAG_NAME="$TAG_NAME-xcode-full"
-#     fi
-#     brew install crane
-#     crane auth login ghcr.io -u you54f -p $CR_PAT
-#     sudo -E bash -c 'crane append --oci-empty-base --platform darwin/arm64 -t "ghcr.io/you54f/macos-jail/$image:$TAG_NAME" -f <(sudo -E tar --xattrs -f - -c -C $image .)'
-#     echo "Successfully uploaded ghcr.io/you54f/macos-jail/$image:$TAG_NAME"
-#   artifacts:
-#     path: $image.tar.gz
-
-
 test_base_task:
   macos_instance:
-    image: foo
+    image: ghcr.io/cirruslabs/macos-sonoma-base:latest
   env:
     matrix:
       - image: sonoma:arm64

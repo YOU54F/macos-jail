@@ -67,7 +67,6 @@ def main():
 
     while len(queue) > 0:
         source_path, copy_opts = queue.popitem()
-        print(f"Copying {source_path} to {copy_opts.target}")
         visited.add(source_path)
 
         try:
