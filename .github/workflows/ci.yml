@@ -15,9 +15,9 @@ jobs:
           macos-13,
         ]
         image: [
-          x86_64
-          x86_64-slim
-          x86_64-xcode_cli
+          x86_64,
+          x86_64-slim,
+          x86_64-xcode_cli,
           x86_64-xcode_cli-slim
         ]
     runs-on: ${{ matrix.os }}
