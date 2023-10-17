@@ -27,7 +27,7 @@ jobs:
       - run: brew install crane
       - run: |
           echo building jail with ${{ matrix.image }}
-          case "$${{ matrix.image }}" in
+          case "${{ matrix.image }}" in
             "x86_64")
               export mkjail_files="macosjail/mkjail.files.x86_64_full"
               ;;
