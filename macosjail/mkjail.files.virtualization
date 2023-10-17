@@ -1,0 +1,20 @@
+# Virtualization
+/System/Library/Frameworks/AppKit.framework/
+/System/Library/Frameworks/ApplicationServices.framework/
+/System/Library/Frameworks/CFNetwork.framework/
+/System/Library/Frameworks/Combine.framework/
+/System/Library/Frameworks/CoreData.framework/
+/System/Library/Frameworks/CoreFoundation.framework/
+/System/Library/Frameworks/CoreGraphics.framework/
+/System/Library/Frameworks/Foundation.framework/
+/System/Library/Frameworks/Hypervisor.framework/
+/System/Library/Frameworks/MetricKit.framework/
+/System/Library/Frameworks/Ruby.framework/
+/System/Library/Frameworks/Security.framework/
+/System/Library/Frameworks/SwiftUI.framework/
+/System/Library/Frameworks/SystemConfiguration.framework/
+/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+/System/Library/Frameworks/Virtualization.framework/
+/System/Library/CoreServices/SystemAppearance.bundle/
+/System/Library/PrivateFrameworks/SkyLight.framework/
+/System/Library/Frameworks/CoreServices.framework/

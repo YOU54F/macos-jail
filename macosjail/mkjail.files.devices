@@ -1,0 +1,6 @@
+# devices
+/dev/null
+/dev/ptmx
+/dev/random
+/dev/urandom
+/dev/zero

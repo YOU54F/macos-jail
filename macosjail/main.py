@@ -22,31 +22,44 @@ def main():
         metavar="JAIL_DIR",
         help="Path to directory where jail chroot will be created",
     )
+    parser.add_argument(
+        "-f",
+        "--files",
+        metavar="JAIL_FILES",
+        help="Jail file(s) list to use",
+    )
     args = parser.parse_args()
 
     script_dir = os.path.abspath(os.path.dirname(__file__))
 
+    print(args.files)
+
+    if args.files is None:
+        files = [os.path.join(script_dir, "mkjail.files")]
+    else:
+        files = args.files.split(",")
     queue: dict[str, CopyOpts] = dict()
-    with open(os.path.join(script_dir, "mkjail.files")) as f:
-        for line in f.read().splitlines():
-            line = line.strip()
-            if len(line) <= 0:
-                continue
+    for file in files:
+        with open(file) as f:
+            for line in f.read().splitlines():
+                line = line.strip()
+                if len(line) <= 0:
+                    continue
 
-            if line.startswith("#"):
-                continue
+                if line.startswith("#"):
+                    continue
 
-            parts = line.split(" ")
+                parts = line.split(" ")
 
-            srcs = parts[0]
-            for src in glob.glob(srcs):
-                if len(parts) == 1:
-                    dst = parts[0]
-                elif len(parts) == 2:
-                    dst = parts[1]
-                else:
-                    raise AssertionError()
-                queue[src] = CopyOpts(target=dst)
+                srcs = parts[0]
+                for src in glob.glob(srcs):
+                    if len(parts) == 1:
+                        dst = parts[0]
+                    elif len(parts) == 2:
+                        dst = parts[1]
+                    else:
+                        raise AssertionError()
+                    queue[src] = CopyOpts(target=dst)
 
     visited: Set[str] = set()
 
@@ -54,6 +67,7 @@ def main():
 
     while len(queue) > 0:
         source_path, copy_opts = queue.popitem()
+        print(f"Copying {source_path} to {copy_opts.target}")
         visited.add(source_path)
 
         try:

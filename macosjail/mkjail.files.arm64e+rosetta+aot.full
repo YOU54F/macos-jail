@@ -1,0 +1,51 @@
+# Shared Caches
+
+/usr/lib/dyld
+
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64.01 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64.02 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64.03 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64.04 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64.map /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/aot_shared_cache.0 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/aot_shared_cache.1 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/aot_shared_cache.2 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/aot_shared_cache.3 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/aot_shared_cache.4 /System/Library/dyld/
+
+# Rosetta
+/Library/Apple/usr/libexec/oah/
+/usr/libexec/rosetta/
+/System/Library/PrivateFrameworks/CoreAnalytics.framework/
+
+# devices
+
+/dev/null
+/dev/ptmx
+/dev/random
+/dev/urandom
+/dev/zero
+
+# binaries
+
+/bin/
+/sbin/
+/usr/bin/
+/usr/sbin/
+/usr/lib/
+
+# configs
+/etc/ssl/
+/System/Library/CoreServices/SystemVersion.plist
+/System/Library/CoreServices/SystemVersionCompat.plist
+
+# Terminal
+/usr/share/terminfo/
+/usr/share/zoneinfo/
+/usr/lib/zsh/5.9/zsh/
+
+# for magic files
+/usr/share/file/

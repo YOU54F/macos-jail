@@ -21,4 +21,4 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v3
       - name: Create jail
-        run: sudo python -m macosjail jail
+        run: sudo python -m macosjail jail -f macosjail/mkjail.files_x86_64.full

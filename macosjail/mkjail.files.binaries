@@ -1,0 +1,6 @@
+# binaries
+/bin/
+/sbin/
+/usr/bin/
+/usr/sbin/
+/usr/lib/
