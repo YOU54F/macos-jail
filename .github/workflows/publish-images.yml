@@ -6,6 +6,12 @@ jobs:
   publish:
     strategy:
       matrix:
+        image: [
+          x86_64,
+          x86_64-slim,
+          x86_64-xcode_cli,
+          x86_64-xcode_cli-slim
+        ]
         include:
           - os: macos-11
             name: bigsur
@@ -13,12 +19,6 @@ jobs:
             name: monterey
           - os: macos-13
             name: ventura
-        image: [
-          x86_64,
-          x86_64-slim,
-          x86_64-xcode_cli,
-          x86_64-xcode_cli-slim
-        ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
