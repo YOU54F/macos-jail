@@ -1,0 +1,4 @@
+# Shared Caches
+
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map /System/Library/dyld/

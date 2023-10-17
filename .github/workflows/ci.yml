@@ -14,11 +14,35 @@ jobs:
           macos-12,
           macos-13,
         ]
+        image: [
+          x86_64
+          x86_64-slim
+          x86_64-xcode_cli
+          x86_64-xcode_cli-slim
+        ]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Python
-        uses: actions/setup-python@v3
-      - name: Create jail
-        run: sudo python -m macosjail jail -f macosjail/mkjail.files_x86_64.full
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - run: brew install crane
+      - run: |
+          echo building jail with $image
+          case "$image" in
+            "x86_64")
+              export mkjail_files="macosjail/mkjail.files.x86_64_full"
+              ;;
+            "x86_64-slim")
+              export mkjail_files="macosjail/mkjail.files.x86_64_slim"
+              ;;
+            "x86_64-xcode_cli")
+              export mkjail_files="macosjail/mkjail.files.x86_64_full,macosjail/mkjail.files.xcode-command-line-tools"
+              ;;
+            "x86_64-xcode_cli-slim")
+              export mkjail_files="macosjail/mkjail.files.x86_64_slim,macosjail/mkjail.files.xcode-command-line-tools"
+              ;;
+            *)
+              echo "Unknown image: $image"
+              ;;
+          esac
+          echo "building jail with $mkjail_files"
+          sudo python3 -m macosjail jail -f macosjail/mkjail.files.base,$mkjail_files

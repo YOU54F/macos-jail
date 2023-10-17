@@ -1,10 +1,3 @@
-# Shared Caches
-
-/usr/lib/dyld
-
-/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e /System/Library/dyld/
-/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map /System/Library/dyld/
-
 # devices
 
 /dev/null
@@ -12,6 +5,9 @@
 /dev/random
 /dev/urandom
 /dev/zero
+
+# Shared Caches
+/usr/lib/dyld
 
 # binaries
 
@@ -26,10 +22,18 @@
 /System/Library/CoreServices/SystemVersion.plist
 /System/Library/CoreServices/SystemVersionCompat.plist
 
-# Terminal
 /usr/share/terminfo/
 /usr/share/zoneinfo/
-/usr/lib/zsh/5.9/zsh/
 
 # for magic files
 /usr/share/file/
+
+# zsh
+/usr/lib/zsh/*/zsh/
+
+# sudo
+
+/etc/sudoers
+/etc/sudoers.d/
+/etc/pam.d/
+/usr/lib/pam/

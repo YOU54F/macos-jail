@@ -1,0 +1,6 @@
+# sudo
+
+/etc/sudoers
+/etc/sudoers.d/
+/etc/pam.d/
+/usr/lib/pam/

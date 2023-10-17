@@ -1,0 +1,7 @@
+# Shared Caches
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64.map /System/Library/dyld/
+# Rosetta
+/Library/Apple/usr/libexec/oah/
+/usr/libexec/rosetta/
+/System/Library/PrivateFrameworks/CoreAnalytics.framework/

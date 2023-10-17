@@ -13,11 +13,37 @@ jobs:
             name: monterey
           - os: macos-13
             name: ventura
+        image: [
+          x86_64
+          x86_64-slim
+          x86_64-xcode_cli
+          x86_64-xcode_cli-slim
+        ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
       - run: brew install crane
-      - run: sudo python -m macosjail jail_dir -f macosjail/mkjail.files_x86_64.full
+      - run: |
+          echo building jail with $image
+          case "$image" in
+            "x86_64")
+              export mkjail_files="macosjail/mkjail.files.x86_64_full"
+              ;;
+            "x86_64-slim")
+              export mkjail_files="macosjail/mkjail.files.x86_64_slim"
+              ;;
+            "x86_64-xcode_cli")
+              export mkjail_files="macosjail/mkjail.files.x86_64_full,macosjail/mkjail.files.xcode-command-line-tools"
+              ;;
+            "x86_64-xcode_cli-slim")
+              export mkjail_files="macosjail/mkjail.files.x86_64_slim,macosjail/mkjail.files.xcode-command-line-tools"
+              ;;
+            *)
+              echo "Unknown image: $image"
+              ;;
+          esac
+          echo "building jail with $mkjail_files"
+          sudo python3 -m macosjail jail -f macosjail/mkjail.files.base,$mkjail_files
       - run: sudo crane auth login ghcr.io -u "${{ github.actor }}" -p "${{ secrets.GITHUB_TOKEN }}"
-      - run: sudo bash -c 'crane append --oci-empty-base --platform darwin -t "ghcr.io/macoscontainers/macos-jail/${{ matrix.name }}:latest" -f <(tar -f - -c -C jail_dir .)'
+      - run: sudo bash -c 'crane append --oci-empty-base --platform darwin/amd64 -t "ghcr.io/you54f/macos-jail/${{ matrix.name }}:${{ matrix.image }} -f <(tar -f - -c -C jail_dir .)'

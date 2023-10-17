@@ -33,7 +33,7 @@
 /usr/share/file/
 
 # zsh
-/usr/lib/zsh/5.9/zsh/
+/usr/lib/zsh/*/zsh/
 
 # sudo
 /etc/sudoers

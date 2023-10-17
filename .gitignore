@@ -6,3 +6,4 @@ jail
 /*-jail
 __pycache__
 .DS_Store
+/tmp

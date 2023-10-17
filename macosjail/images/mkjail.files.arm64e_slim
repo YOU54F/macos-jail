@@ -1,8 +1,8 @@
 # Shared Caches
 
 /usr/lib/dyld
+
 /System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e /System/Library/dyld/
-/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.01 /System/Library/dyld/
 /System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e.map /System/Library/dyld/
 
 # devices
@@ -33,3 +33,9 @@
 
 # for magic files
 /usr/share/file/
+
+# sudo
+/etc/sudoers
+/etc/sudoers.d/
+/etc/pam.d/
+/usr/lib/pam/

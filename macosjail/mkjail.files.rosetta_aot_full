@@ -1,0 +1,6 @@
+# Shared Caches
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/aot_shared_cache.0 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/aot_shared_cache.1 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/aot_shared_cache.2 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/aot_shared_cache.3 /System/Library/dyld/
+/System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/aot_shared_cache.4 /System/Library/dyld/
