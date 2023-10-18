@@ -1,4 +1,6 @@
 # Shared Caches
+/System/Library/dyld/*x86_64
+/System/Library/dyld/*x86_64.*
 /System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64 /System/Library/dyld/
 /System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64.01 /System/Library/dyld/
 /System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64.02 /System/Library/dyld/

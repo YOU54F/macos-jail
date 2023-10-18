@@ -6,19 +6,17 @@ jobs:
   publish:
     strategy:
       matrix:
+        os: [
+          macos-11,
+          macos-12,
+          macos-13,
+        ]
         image: [
           x86_64,
           x86_64-slim,
           x86_64-xcode_cli,
           x86_64-xcode_cli-slim
         ]
-        include:
-          - os: macos-11
-            name: bigsur
-          - os: macos-12
-            name: monterey
-          - os: macos-13
-            name: ventura
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -46,4 +44,20 @@ jobs:
           echo "building jail with $mkjail_files"
           sudo python3 -m macosjail jail -f macosjail/mkjail.files.base,$mkjail_files
       - run: sudo crane auth login ghcr.io -u "${{ github.actor }}" -p "${{ secrets.GITHUB_TOKEN }}"
-      - run: sudo bash -c 'crane append --oci-empty-base --platform darwin/amd64 -t "ghcr.io/you54f/macos-jail/${{ matrix.name }}:${{ matrix.image }}" -f <(tar -f - -c -C jail .)'
+      - run: |
+          case "${{ matrix.os }}" in
+          "macos-11")
+              export IMAGE_NAME="bigsur"
+            ;;
+          "macos-12")
+              export IMAGE_NAME="monterey"
+            ;;
+          "macos-13")
+              export IMAGE_NAME="ventura"
+            ;;
+            *)
+              echo "Unknown image: ${{ matrix.image }}"
+              ;;
+          esac
+          sudo bash -c 'crane append --oci-empty-base --platform darwin/amd64 -t "ghcr.io/you54f/macos-jail/$IMAGE_NAME:${{ matrix.image }}" -f <(tar -f - -c -C jail .)'
+
