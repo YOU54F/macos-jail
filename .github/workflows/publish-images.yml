@@ -46,4 +46,4 @@ jobs:
           echo "building jail with $mkjail_files"
           sudo python3 -m macosjail jail -f macosjail/mkjail.files.base,$mkjail_files
       - run: sudo crane auth login ghcr.io -u "${{ github.actor }}" -p "${{ secrets.GITHUB_TOKEN }}"
-      - run: sudo bash -c 'crane append --oci-empty-base --platform darwin/amd64 -t "ghcr.io/you54f/macos-jail/${{ matrix.name }}:${{ matrix.image }} -f <(tar -f - -c -C jail_dir .)'
+      - run: sudo bash -c 'crane append --oci-empty-base --platform darwin/amd64 -t "ghcr.io/you54f/macos-jail/${{ matrix.name }}:${{ matrix.image }} -f <(tar -f - -c -C jail .)'
